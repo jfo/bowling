@@ -1,9 +1,6 @@
 require "test/unit"
 require_relative "game"
 
-@@data = [
-]
-
 class GameTest < Test::Unit::TestCase
     def  test_no_score_game
         game = make_game [0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0]

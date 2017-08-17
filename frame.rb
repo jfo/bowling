@@ -1,9 +1,9 @@
 class Frame
     attr_accessor :first, :second
 
-    def initialize(arr)
-        @first = arr.first
-        @second = (arr[1] ? arr[1] : 0)
+    def initialize(first, second)
+        @first = first
+        @second = second
     end
 
     def value

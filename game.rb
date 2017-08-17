@@ -37,8 +37,8 @@ class Game
 
         # these nil checks allow us to iterate over the whole list of @frames
         # without running into trouble
-        frame1 =  @frames[i + 1] ? @frames[i + 1] : Frame.new([0,0])
-        frame2 =  @frames[i + 2] ? @frames[i + 2] : Frame.new([0,0])
+        frame1 =  @frames[i + 1] ? @frames[i + 1] : Frame.new(0,0)
+        frame2 =  @frames[i + 2] ? @frames[i + 2] : Frame.new(0,0)
 
         # I wanted this to be recursive so bad, I can't believe I didn't know
         # how bowling works.
@@ -60,10 +60,13 @@ class Game
         i = 0
         until i > (@rolls.length - 1)
             if @rolls[i] == 10
-                acc << Frame.new([@rolls[i], 0])
+                acc << Frame.new(@rolls[i], 0)
                 i += 1
             else
-                acc << Frame.new([@rolls[i], @rolls[i + 1]])
+                acc << Frame.new(
+                    @rolls[i],
+                    @rolls[i + 1] ?  @rolls[i + 1] : 0
+                )
                 i += 2
             end
         end

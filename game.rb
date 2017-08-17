@@ -24,7 +24,7 @@ class Game
     def score_frames
         # the 10th frame is worth only its face value and is counted here
         # if there is a "bonus" frame 11, it is also counted here
-        @frames[0..11].map { |e| e.value }.inject :+
+        @frames.map { |e| e.value }.inject :+
     end
 
     def score_bonus

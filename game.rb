@@ -16,19 +16,15 @@ class Game
     end
 
     def score
-        score_frames + score_bonus + extra_roll_score
+        score_frames + score_bonus
     end
 
     private
 
-    def extra_roll_score
-        # if there is an extra roll, it will appear as an 11th frame
-        (@frames[11] ? @frames[11].first : 0)
-    end
-
     def score_frames
         # the 10th frame is worth only its face value and is counted here
-        @frames[0..10].map { |e| e.value }.inject :+
+        # if there is a "bonus" frame 11, it is also counted here
+        @frames[0..11].map { |e| e.value }.inject :+
     end
 
     def score_bonus

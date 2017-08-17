@@ -37,8 +37,8 @@ class Game
 
         # these nil checks allow us to iterate over the whole list of @frames
         # without running into trouble
-        frame1 =  !@frames[i + 1].nil? ? @frames[i + 1] : Frame.new([0,0])
-        frame2 =  !@frames[i + 2].nil? ? @frames[i + 2] : Frame.new([0,0])
+        frame1 =  @frames[i + 1] ? @frames[i + 1] : Frame.new([0,0])
+        frame2 =  @frames[i + 2] ? @frames[i + 2] : Frame.new([0,0])
 
         # I wanted this to be recursive so bad, I can't believe I didn't know
         # how bowling works.

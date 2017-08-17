@@ -13,7 +13,6 @@ class Game
     end
 
     def score
-        p @frames.count
         score_frames + score_bonus + (@frames[11] ? @frames[11].first : 0)
     end
 
@@ -58,10 +57,3 @@ class Game
         acc
     end
 end
-
-game = Game.new
-x = [5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5]
-x.each do |el|
-    game.roll el
-end
-p game.score

@@ -11,6 +11,12 @@ class Game
 
     def score
         # Only compute frames when asking for the score
+        # This is reasonable to do here since this class's api is so simple,
+        # but it's also indicative of the worst of OOP internal state holding
+        # patterns. I could pass a _local_ `frames` into the scoring functions
+        # directly, but I'd be copying a bunch of data a bunch of times for
+        # every stackframe function call. Why not just cache it in an instance
+        # var?
         @frames = makeframes[0..11]
 
         score_frames + score_bonus

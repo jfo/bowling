@@ -3,19 +3,16 @@ require_relative 'frame'
 class Game
     def initialize
         @rolls = []
-        @frames = []
     end
 
     def roll(pins)
         @rolls << pins
-
-        # rather than keep track of where we are in a frame or not, let's just
-        # recompute this every time. Not efficient but simple to think about
-        # We never, ever want more than 11 frames maximum.
-        @frames = makeframes[0..11]
     end
 
     def score
+        # Only compute frames when asking for the score
+        @frames = makeframes[0..11]
+
         score_frames + score_bonus
     end
 

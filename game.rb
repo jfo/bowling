@@ -32,6 +32,8 @@ class Game
         @frames[0..8].each_with_index.map { |_, i| score_frame_bonus i }.inject :+
     end
 
+    # Takes an index and computes that frame's bonus in the context of the
+    # current game.
     def score_frame_bonus(i)
         frame0 = @frames[i]
 
@@ -40,16 +42,17 @@ class Game
         frame1 =  @frames[i + 1] ? @frames[i + 1] : Frame.new(0,0)
         frame2 =  @frames[i + 2] ? @frames[i + 2] : Frame.new(0,0)
 
+        # we can just precompute what the first and second roll values would be here.
+        # This de-nests the conditional below and improves readibility.
+        first_roll = frame1.first
+        second_roll = (frame1.strike? ?  frame2.first : frame1.second)
+
         # I wanted this to be recursive so bad, I can't believe I didn't know
         # how bowling works.
         if frame0.strike?
-            if frame1.strike?
-                frame1.first + frame2.first
-            else
-                frame1.first + frame1.second
-            end
+            first_roll + second_roll
         elsif frame0.spare?
-            frame1.first
+            first_roll
         else
             0
         end

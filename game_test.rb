@@ -61,10 +61,7 @@ class GameTest < Test::Unit::TestCase
 
     def make_game(arr)
        game = Game.new
-       arr.each do |e|
-           game.roll e
-       end
+       arr.each { |e| game.roll e }
        game
     end
-
 end
